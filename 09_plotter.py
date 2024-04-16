@@ -1,6 +1,8 @@
 import ccxt
 import pandas as pd
 import mplfinance as mpf
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 # Initialize Binance client through ccxt
 binance = ccxt.binance()
@@ -12,14 +14,6 @@ def fetch_data():
     df['timestamp'] = pd.to_datetime(df['timestamp'], unit='ms')
     df.set_index('timestamp', inplace=True)
     return df
-
-# Fetch data and test plot
-# df = fetch_data()
-# mpf.plot(df, type='candle', title='BTC/USDT - 15m Candlestick')
-
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
-
 fig, ax = plt.subplots()
 
 def update(frame):
